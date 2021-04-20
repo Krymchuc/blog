@@ -1,5 +1,5 @@
 <?php
-
+use App\Http\Controllers\DiggingDeeperController;
 use App\Http\Controllers\RestTestController;
 use Illuminate\Support\Facades\Route;
 
@@ -40,4 +40,11 @@ Route::group($groupData, function () {
     Route::resource('posts', PostController::class)
         ->except(['show'])                               //не робити маршрут для метода show
         ->names('blog.admin.posts');
+});
+Route::group(['prefix' => 'digging_deeper'], function () {
+
+    Route::get('collections', [DiggingDeeperController::class, 'collections'])
+
+        ->name('digging_deeper.collections');
+
 });
