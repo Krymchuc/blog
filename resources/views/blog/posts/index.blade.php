@@ -1,12 +1,13 @@
 @extends('layouts.main')
-
+<!--шаблон де виводимо номери постів, назву, дату публікації та час-->
 @section('content')
     <table>
         @foreach ($items as $item)
             <tr>
-                <td>{{$item->id}}</td>
-                <td>{{$item->title}}</td>
-                <td>{{$item->created_at}}</td>
+
+                <td>{{$loop->index+1}}</td>
+                <td>{{$item->user->name}}&nbsp;&nbsp;&nbsp;</td>
+                <td><a href="{{ route('blog.posts.show', $item->id) }}">{{ $item->title }}</a></td>
             </tr>
         @endforeach
     </table>
